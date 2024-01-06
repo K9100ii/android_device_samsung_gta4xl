@@ -11,6 +11,9 @@ function blob_fixup() {
         vendor/lib/hw/audio.primary.exynos9611.so)
             "${PATCHELF}" --remove-needed libaudio_soundtrigger.so "${2}"
             ;;
+        vendor/bin/hw/rild|vendor/lib*/libsec-ril.so)
+            "${PATCHELF}" --replace-needed libril.so libril-samsung.so "${2}"
+            ;;
     esac
 }
 
